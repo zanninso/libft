@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/25 04:22:06 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/11/25 22:31:39 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,21 +103,24 @@ int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
-char			**ft_strsplit(char const *s, char c);
+char			**ft_strsplit(char const *s, char *cmp);
 char			*ft_strtoupper(char *str);
 char			*ft_realloc(char *str, size_t new_size);
 char			*ft_skipchr(const char *s, char c);
 char			*ft_skipnchr(const char *s, int i);
-char			*ft_skip_chars(char *str, const char *compare);
+char			*ft_skip_chars(const char *str, const char *compare);
 const char		*ft_skip_unitl_char(const char *str, const char *compare);
 int				ft_strindexof(const char *s, char c);
 char			*ft_strreplace(char *str, char find, char replace);
 int				ft_str_occurence(char *str, char c);
 void			ft_strreplaceall(char *str, char find, char replace);
-int				ft_wordcount(const char *str, char c);
+int				ft_wordcount(const char *str, char *cmp);
 char			*ft_strnjoin(char	**strings, int n);
 void			ft_translate(char *str,const char *from,const char *to);
 _Bool			ft_str_in_arr(char *str, char **tab);
+void			ft_free_2d_tab(char **tab);
+int				ft_str_match(char *str, int (*fun)(int));
+
 
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -137,6 +140,7 @@ int				get_next_line(const int fd, char **line);
 void			ft_die(const char *message, int error_nb);
 
 int				ft_printf(const char *restrict fmt, ...);
+_Bool			ft_is_dir(const char *file_name);
 
 char			ft_set_flags(const char *str, _Bool *flags,
 								const char *acpt_flgs, void (*f)(char, _Bool*));

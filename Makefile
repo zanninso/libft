@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2019/11/25 04:01:07 by aait-ihi         ###   ########.fr        #
+#    Updated: 2019/11/25 22:22:02 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,10 @@ STRING_SRC = 	ft_atoi.c\
 				ft_str_occurence.c\
 				ft_strnjoin.c\
 				ft_translate.c\
-				ft_str_in_arr.c
+				ft_str_in_arr.c\
+				ft_str_match.c\
+				ft_free_2d_tab.c
+
 
 BIGINT_SRC = 	aritmitic_op.c\
 				conditional_op.c\
@@ -139,7 +142,8 @@ PRINTF_SRC = 	dispatcher.c\
 
 SRC	=			get_next_line.c\
 				ft_die.c\
-				flags.c
+				flags.c\
+				ft_is_dir.c
 
 OBJ =	$(BIGINT_SRC:%.c=%.o) $(STRING_SRC:%.c=%.o) $(BITS_SRC:%.c=%.o) $(CHAR_SRC:%.c=%.o) $(LIST_SRC:%.c=%.o) $(MEMORY_SRC:%.c=%.o) $(NUMBER_SRC:%.c=%.o) $(PRINTF_SRC:%.c=%.o) $(SRC:%.c=%.o)
 

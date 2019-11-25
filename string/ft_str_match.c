@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wordcount.c                                     :+:      :+:    :+:   */
+/*   ft_str_match.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/28 19:23:21 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/25 22:36:36 by aait-ihi         ###   ########.fr       */
+/*   Created: 2019/11/25 15:30:58 by aait-ihi          #+#    #+#             */
+/*   Updated: 2019/11/25 15:50:29 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wordcount(const char *s, char *cmp)
+int ft_str_match(char *str, int (*fun)(int))
 {
-	int	size;
-
-	size = 0;
-	if (s)
-	{
-		s = ft_skip_chars(s, cmp);
-		while (*s)
-		{
-			size++;
-			s = ft_skip_unitl_char(s, cmp);
-			s = ft_skip_chars(s, cmp);
-		}
-	}
-	return (size);
+    if (str)
+    {
+        while (*str && fun(*str))
+            str++;
+        return(*str == 0);
+    }
+    return (0);
 }
