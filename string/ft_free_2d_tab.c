@@ -6,15 +6,15 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 22:18:50 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/25 22:40:54 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:28:46 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_free_2d_tab(char **tab)
+void	ft_free_2d_tab(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (tab)

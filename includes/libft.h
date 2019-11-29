@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/25 22:31:39 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:31:44 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,22 +116,22 @@ int				ft_str_occurence(char *str, char c);
 void			ft_strreplaceall(char *str, char find, char replace);
 int				ft_wordcount(const char *str, char *cmp);
 char			*ft_strnjoin(char	**strings, int n);
-void			ft_translate(char *str,const char *from,const char *to);
+void			ft_translate(char *str, const char *from, const char *to);
 _Bool			ft_str_in_arr(char *str, char **tab);
 void			ft_free_2d_tab(char **tab);
 int				ft_str_match(char *str, int (*fun)(int));
 
-
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void			ft_lstdel(t_list **alst);
 void			ft_lstdelfn(void *obj, size_t size);
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_list			**ft_lstfind(t_list **lst,const char *needle, size_t size);
+t_list			**ft_lstfind(t_list **lst, const char *needle, size_t size);
+t_list			*ft_lstdup(t_list **lst);
 t_list			*ft_lstpushback(t_list **blst, void const *content,
-															size_t content_size);
+														size_t content_size);
 
 void			ft_printbit(size_t n, int size);
 __uint64_t		ft_reverse_bits(__uint64_t n, int size);

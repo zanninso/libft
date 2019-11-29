@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_dir.c                                        :+:      :+:    :+:   */
+/*   ft_lstdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 15:55:30 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/29 14:21:06 by aait-ihi         ###   ########.fr       */
+/*   Created: 2019/11/29 06:02:24 by aait-ihi          #+#    #+#             */
+/*   Updated: 2019/11/29 14:29:59 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <dirent.h>
 
-_Bool	ft_is_dir(const char *file_name)
+t_list	*ft_lstdup(t_list **lst)
 {
-	DIR	*dirp;
+	t_list	*cur;
+	t_list	*dup;
+	t_list	**next;
 
-	if ((dirp = opendir(file_name)))
+	dup = NULL;
+	next = &dup;
+	if (lst)
 	{
-		closedir(dirp);
-		return (1);
+		cur = *lst;
+		while (cur)
+		{
+			*next = ft_lstnew(cur->content, cur->content_size);
+			next = *next ? &(*next)->next : next;
+			cur = cur->next;
+		}
 	}
-	return (0);
+	return (dup);
 }

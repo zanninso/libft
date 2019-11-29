@@ -6,19 +6,19 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:58 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/25 15:50:29 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:29:23 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_str_match(char *str, int (*fun)(int))
+int	ft_str_match(char *str, int (*fun)(int))
 {
-    if (str)
-    {
-        while (*str && fun(*str))
-            str++;
-        return(*str == 0);
-    }
-    return (0);
+	if (str)
+	{
+		while (*str && fun(*str))
+			str++;
+		return (*str == 0);
+	}
+	return (0);
 }
