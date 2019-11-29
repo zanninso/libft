@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/29 14:31:44 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:15:54 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list			**ft_lstfind(t_list **lst, const char *needle, size_t size);
 t_list			*ft_lstdup(t_list **lst);
+int				ft_lstsize(t_list *begin, int all);
 t_list			*ft_lstpushback(t_list **blst, void const *content,
 														size_t content_size);
 

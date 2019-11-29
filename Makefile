@@ -6,7 +6,7 @@
 #    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2019/11/29 12:42:10 by aait-ihi         ###   ########.fr        #
+#    Updated: 2019/11/29 16:16:04 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,8 @@ LIST_SRC =		ft_lstadd.c\
 				ft_lstnew.c\
 				ft_lstpushback.c\
 				ft_lstfind.c\
-				ft_lstdup.c
+				ft_lstdup.c\
+				ft_lstsize.c
 
 MEMORY_SRC =	ft_bzero.c\
 				ft_memalloc.c\

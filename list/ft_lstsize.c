@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_bits.c                                  :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/19 14:15:08 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/29 16:17:25 by aait-ihi         ###   ########.fr       */
+/*   Created: 2019/11/29 16:14:23 by aait-ihi          #+#    #+#             */
+/*   Updated: 2019/11/29 16:23:42 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-__uint64_t	ft_reverse_bits(__uint64_t nb0, int n)
+int	ft_lstsize(t_list *begin, int all)
 {
-	__uint64_t	nb;
-	int			i;
+	int	i;
 
 	i = 0;
-	nb = 0;
-	while (i++ < n)
+	while (begin)
 	{
-		nb <<= 1;
-		nb ^= nb0 & 1;
-		nb0 >>= 1;
+		i += (begin->content != NULL || all);
+		begin = begin->next;
 	}
-	return (nb);
+	return (i);
 }
