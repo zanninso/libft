@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/29 16:15:54 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/11 02:17:56 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ char			*ft_itoa_base(long long n, int base);
 int				ft_isdigit(int c);
 char			*ft_uitoa(unsigned long long n);
 char			*ft_uitoa_base(unsigned long long n, int base);
-int				ft_int_min(int *tab, size_t size);
+int				ft_int_min(int *table, size_t size);
 int				ft_max(int a, int b);
-int				ft_int_max(int *tab, size_t size);
+int				ft_int_max(int *table, size_t size);
 long long		ft_pow(long long n, int p);
 int				ft_sqrt(int s);
 bool			ft_swap(int *a, int *b);
@@ -117,8 +117,8 @@ void			ft_strreplaceall(char *str, char find, char replace);
 int				ft_wordcount(const char *str, char *cmp);
 char			*ft_strnjoin(char	**strings, int n);
 void			ft_translate(char *str, const char *from, const char *to);
-_Bool			ft_str_in_arr(char *str, char **tab);
-void			ft_free_2d_tab(char **tab);
+_Bool			ft_str_in_arr(char *str, char **table);
+void			ft_free_2d_tab(char **table);
 int				ft_str_match(char *str, int (*fun)(int));
 
 t_list			*ft_lstnew(void const *content, size_t content_size);
