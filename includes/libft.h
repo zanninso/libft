@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/11 02:17:56 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/14 06:31:17 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,9 @@ char			*ft_realloc(char *str, size_t new_size);
 char			*ft_skipchr(const char *s, char c);
 char			*ft_skipnchr(const char *s, int i);
 char			*ft_skip_chars(const char *str, const char *compare);
+char			*ft_rskip_chars(const char *str, const char *compare, int i);
 const char		*ft_skip_unitl_char(const char *str, const char *compare);
+char			*ft_rskip_unitl_char(const char *str, const char *comp, int i);
 int				ft_strindexof(const char *s, char c);
 char			*ft_strreplace(char *str, char find, char replace);
 int				ft_str_occurence(char *str, char c);
