@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/14 06:31:17 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/19 00:59:45 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_list
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
+	struct s_list	*last;
 }				t_list;
 
 int				ft_isalpha(int c);
@@ -126,6 +127,8 @@ int				ft_str_match(char *str, int (*fun)(int));
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst);
+t_list			*ft_lstenqueue(t_list *list, t_list *new);
+t_list			*ft_lstenqueue(t_list *list, t_list *new);
 void			ft_lstdelfn(void *obj, size_t size);
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));

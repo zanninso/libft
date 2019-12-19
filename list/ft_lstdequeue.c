@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstdequeue.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 11:38:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/19 00:56:05 by aait-ihi         ###   ########.fr       */
+/*   Created: 2019/12/19 00:49:40 by aait-ihi          #+#    #+#             */
+/*   Updated: 2019/12/19 01:01:10 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+void ft_lstdequeue(t_list **list, void (*del)(void **))
 {
-	del((*alst)->content, (*alst)->content_size);
-	free(*alst);
-	*alst = 0;
+    t_list *tmp;
+    if(list && *list)
+    {
+        tmp  = (*list)->next;
+        del((void **)list);
+        *list = tmp;
+    }
 }
