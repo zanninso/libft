@@ -6,7 +6,7 @@
 /*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/19 00:59:45 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/19 01:20:03 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int				ft_str_occurence(char *str, char c);
 void			ft_strreplaceall(char *str, char find, char replace);
 int				ft_wordcount(const char *str, char *cmp);
 char			*ft_strnjoin(char	**strings, int n);
-void			ft_translate(char *str, const char *from, const char *to);
+char			*ft_translate(char *str, const char *from, const char *to);
 _Bool			ft_str_in_arr(char *str, char **table);
 void			ft_free_2d_tab(char **table);
 int				ft_str_match(char *str, int (*fun)(int));

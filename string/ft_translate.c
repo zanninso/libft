@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_translate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 07:21:19 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/11/29 14:25:42 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/19 01:20:43 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_translate(char *str, const char *from, const char *to)
+char	*ft_translate(char *str, const char *from, const char *to)
 {
 	int	i;
 
 	if (!str || !from || !to)
-		return ;
+		return (str);
 	while (*str)
 	{
 		i = 0;
@@ -30,4 +30,5 @@ void	ft_translate(char *str, const char *from, const char *to)
 		}
 		str++;
 	}
+	return(str);
 }
