@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/19 01:20:03 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/21 00:58:04 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "bigint.h"
 # define ABS(v) (v < 0 ? (v * -1) : v)
 # define SIGN(v) (v >= 0 ? 1 : -1)
+# define BETWEEN(v, v1, v2) ((v) >= (v1) && (v) <= (v2))
 
 typedef struct	s_list
 {
@@ -48,6 +49,7 @@ char			*ft_uitoa(unsigned long long n);
 char			*ft_uitoa_base(unsigned long long n, int base);
 int				ft_int_min(int *table, size_t size);
 int				ft_max(int a, int b);
+int				ft_min(int a, int b);
 int				ft_int_max(int *table, size_t size);
 long long		ft_pow(long long n, int p);
 int				ft_sqrt(int s);
@@ -127,8 +129,8 @@ int				ft_str_match(char *str, int (*fun)(int));
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst);
-t_list			*ft_lstenqueue(t_list *list, t_list *new);
-t_list			*ft_lstenqueue(t_list *list, t_list *new);
+t_list			*ft_lstenqueue(t_list **list, t_list *new);
+void			ft_lstdequeue(t_list **list, void (*del)(void **));
 void			ft_lstdelfn(void *obj, size_t size);
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
