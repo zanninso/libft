@@ -6,7 +6,7 @@
 #    By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2019/12/19 01:00:34 by aait-ihi         ###   ########.fr        #
+#    Updated: 2019/12/21 21:51:49 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,8 @@ MEMORY_SRC =	ft_bzero.c\
 				ft_memcpy.c\
 				ft_memdel.c\
 				ft_memmove.c\
-				ft_memset.c
+				ft_memset.c\
+				ft_malloc2d.c
 
 NUMBER_SRC =	buble_sort.c\
 				ft_find_int.c\

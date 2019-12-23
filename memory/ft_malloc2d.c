@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstenqueue.c                                    :+:      :+:    :+:   */
+/*   ft_malloc2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/19 00:44:52 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/21 14:08:50 by aait-ihi         ###   ########.fr       */
+/*   Created: 2019/12/21 21:13:49 by aait-ihi          #+#    #+#             */
+/*   Updated: 2019/12/21 21:52:28 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-t_list *ft_lstenqueue(t_list **list, t_list *new)
+void **ft_malloc2d(int rows, int size, void* (*alloc)(size_t))
 {
-    if(new && list && *list)
+    void **ret;
+    int i;
+
+    i = 0;
+    if (!(ret = alloc(sizeof(void *) * rows)))
+        return (NULL);
+    while (i < rows)
     {
-        if((*list)->last)
-            (*list)->last->next = new;
-        else
-            (*list)->next = new;
-        (*list)->last = new;
-        return ((*list));
+        if (!(ret[i] = alloc(size)))
+        {
+            ft_free_2d_tab((char **)ret);
+            return (NULL);
+        }
+        i++;
     }
-    else if(new && list)
-    {
-        *list = new;
-        return ((*list));
-    }
-    return (NULL);
+    return (ret);
 }
