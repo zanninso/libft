@@ -6,7 +6,7 @@
 /*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 21:13:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/21 21:52:28 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/23 01:13:25 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void **ft_malloc2d(int rows, int size, void* (*alloc)(size_t))
     int i;
 
     i = 0;
-    if (!(ret = alloc(sizeof(void *) * rows)))
+    if (!rows || !size || !(ret = alloc(sizeof(void *) * rows)))
         return (NULL);
     while (i < rows)
     {
