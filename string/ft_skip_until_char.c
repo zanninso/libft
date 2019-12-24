@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 21:19:58 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/14 06:32:02 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2019/12/24 01:29:57 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ const char	*ft_skip_unitl_char(const char *str, const char *compare)
 	return (str);
 }
 
-char	*ft_rskip_unitl_char(const char *str, const char *compare, int i)
+char		*ft_rskip_unitl_char(const char *str, const char *compare, int i)
 {
 	while (i >= 0 && ((!str[i]) || !ft_isinstr(str[i], compare)))
 		i--;
