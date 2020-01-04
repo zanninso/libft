@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/24 01:30:58 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/01/04 22:52:01 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
 void			**ft_malloc2d(int rows, int size, void*(*alloc)(size_t));
+char			*ft_realloc(void *str, size_t size, size_t new_size);
 
 long long		ft_atoi(const char *s);
 long long		ft_atoi_base(const char *s, const char *s_base, int base);
@@ -109,7 +110,6 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char *cmp);
 char			*ft_strtoupper(char *str);
-char			*ft_realloc(char *str, size_t new_size);
 char			*ft_skipchr(const char *s, char c);
 char			*ft_skipnchr(const char *s, int i);
 char			*ft_skip_chars(const char *str, const char *compare);
