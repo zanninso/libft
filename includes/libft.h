@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/01/17 23:23:10 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/01/18 04:33:37 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ typedef struct	s_list
 
 int				ft_isalpha(int c);
 int				ft_isalnum(int c);
+int				ft_isnalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
+int				ft_isunprint(int c);
 int				ft_iswhitespace(char c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
@@ -112,10 +114,13 @@ char			**ft_strsplit(char const *s, char *cmp);
 char			*ft_strtoupper(char *str);
 char			*ft_skipchr(const char *s, char c);
 char			*ft_skipnchr(const char *s, int i);
-char			*ft_skip_chars(const char *str, const char *compare);
-char			*ft_rskip_chars(const char *str, const char *compare, int i);
-const char		*ft_skip_unitl_char(const char *str, const char *compare);
-char			*ft_rskip_unitl_char(const char *str, const char *comp, int i);
+char			*ft_skip_chars(const char *str, const char *cmp, int (*f)(int));
+char			*ft_rskip_chars(const char *str, const char *cmp,
+														int (*f)(int), int i);
+char			*ft_skip_unitl_char(const char *str, const char *compare,
+																int (*f)(int));
+char			*ft_rskip_unitl_char(const char *str, const char *compare,
+														int (*f)(int), int i);
 int				ft_strindexof(const char *s, char c);
 char			*ft_strreplace(char *str, char find, char replace);
 int				ft_str_occurence(char *str, char c);
