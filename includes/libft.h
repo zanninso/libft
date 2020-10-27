@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/26 13:04:38 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/26 21:58:45 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "printf.h"
 # include "get_next_line.h"
 # include "bigint.h"
+# include "hash_table.h"
 # define ABS(v) (v < 0 ? -(v) : (v))
 # define SIGN(v) (v >= 0 ? 1 : -1)
 # define BETWEEN(v, v1, v2) ((v) >= (v1) && (v) <= (v2))

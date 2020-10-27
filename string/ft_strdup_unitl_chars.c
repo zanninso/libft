@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xml_validator.c                                    :+:      :+:    :+:   */
+/*   ft_strdup_unitl_chars.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/26 13:39:16 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/27 20:37:53 by aait-ihi         ###   ########.fr       */
+/*   Created: 2020/10/24 18:41:59 by aait-ihi          #+#    #+#             */
+/*   Updated: 2020/10/24 18:50:24 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "xml.h"
+#include <libft.h>
 
-
-t_xml *validate_xml(t_xml_tag *root, t_xml_schema *dtd)
+const char	*ft_strdup_unitl_chars(const char *str, const char *compare)
 {
-	
+    int n;
+    char *new;
+
+    n = 0;
+	while (str && str[n] && !ft_isinstr(str[n], compare))
+		n++;
+    if(n > 0 && (new = malloc(sizeof(char) * (n+1))))
+        return (ft_strncpy(str, new, n));
+	return (NULL);
 }
