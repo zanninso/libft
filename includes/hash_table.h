@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   hash_table.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 21:26:35 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/28 09:56:15 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/28 20:09:28 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HASH_TABLE_H
 # define HASH_TABLE_H
-
-typedef struct	s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-	struct s_list	*last;
-}				t_list;
 
 typedef struct	s_hash_content
 {

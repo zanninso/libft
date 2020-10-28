@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 13:48:45 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/26 13:49:24 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/28 20:42:19 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static t_xml_lexer xmlexer_get_tag(char **line)
 {
 	char *tmp;
-	char *tmp2;
 	t_xml_lexer node;
 
 	node.type = (line[0][1] == '/' ? XMLTAGCLOSE : XMLTAGOPEN);

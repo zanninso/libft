@@ -6,7 +6,7 @@
 /*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/26 21:58:45 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/28 20:47:06 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				ft_isnalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_isunprint(int c);
-int				ft_iswhitespace(char c);
+int				ft_iswhitespace(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 
@@ -140,6 +140,8 @@ t_list			*ft_lstenqueue(t_list **list, t_list *new);
 void			ft_lstdequeue(t_list **list, void (*del)(void **));
 void			ft_lstdelfn(void *obj, size_t size);
 void			ft_lstadd(t_list **alst, t_list *new);
+void			ft_lstpush(t_list **alst, t_list *new);
+t_list			*ft_lstpop(t_list **lst);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list			**ft_lstfind(t_list **lst, const char *needle, size_t size);

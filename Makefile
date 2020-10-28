@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
+#    By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2020/01/04 22:52:34 by aait-ihi         ###   ########.fr        #
+#    Updated: 2020/10/28 20:30:27 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ CHAR_SRC =		ft_isalnum.c\
 				ft_toupper.c
 
 LIST_SRC =		ft_lstadd.c\
+				ft_lstpop.c\
 				ft_lstdel.c\
 				ft_lstdelone.c\
 				ft_lstiter.c\
@@ -145,12 +146,18 @@ PRINTF_SRC = 	dispatcher.c\
 				set_options.c\
 				va_arg.c
 
+XML_SRC =		xml_dom.c\
+				lexer.c
+				
+
 SRC	=			get_next_line.c\
 				ft_die.c\
 				flags.c\
 				ft_is_dir.c
 
-OBJ =	$(BIGINT_SRC:%.c=%.o) $(STRING_SRC:%.c=%.o) $(BITS_SRC:%.c=%.o) $(CHAR_SRC:%.c=%.o) $(LIST_SRC:%.c=%.o) $(MEMORY_SRC:%.c=%.o) $(NUMBER_SRC:%.c=%.o) $(PRINTF_SRC:%.c=%.o) $(SRC:%.c=%.o)
+OBJ =	$(BIGINT_SRC:%.c=%.o) $(STRING_SRC:%.c=%.o) $(BITS_SRC:%.c=%.o) \
+		$(CHAR_SRC:%.c=%.o) $(LIST_SRC:%.c=%.o) $(MEMORY_SRC:%.c=%.o)\
+		$(NUMBER_SRC:%.c=%.o) $(PRINTF_SRC:%.c=%.o) $(XML_SRC:%.c=%.o) $(SRC:%.c=%.o)
 
 
 all: $(NAME)
@@ -160,7 +167,7 @@ $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
- %.o : bigint/%.c includes/bigint.h includes/libft.h
+%.o : bigint/%.c includes/bigint.h includes/libft.h
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
  %.o : bits/%.c $(LIBFT_HEADER)
@@ -182,6 +189,8 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
  %.o : string/%.c $(LIBFT_HEADER)
+	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
+%.o : xml/%.c $(LIBFT_HEADER)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
  %.o : %.c $(LIBFT_HEADER)
