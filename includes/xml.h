@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:12 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/26 13:20:29 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:53:48 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ typedef struct	s_xml_lexer
 	int 	type;
     int    value_len;
 }          t_xml_lexer ;
+
+typedef union u_tag_value
+{ 
+    int integer;
+    float decimal;
+	double real;
+	long bigint;
+    char *string;
+}			t_tag_value;
+
+typedef struct	s_xml_tag
+{
+	char            *name;
+	t_list 			*nodes;
+	t_list			*attributes;
+    t_tag_value    	value;
+}         		t_xml_tag;
 
 t_list *read_and_tokenizexml(int fd);
 
