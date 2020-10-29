@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xml_dom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 13:39:16 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/28 23:48:00 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/29 14:50:08 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_xml_tag *xml_modeling(t_list *tokens)
 		tmp = tokens->content;
 		if(tmp->type == XMLTAGOPEN)
 			opentag(&tag_queue, tmp);
-		else if(tmp->type == XMLVALUE)
+		else if(tag_queue && tmp->type == XMLVALUE)
 			check_value(&tag_queue, tmp);
 		else if(tmp->type == XMLTAGCLOSE && tag_queue && tag_queue->next)
 			closetag(&tag_queue, tmp);
