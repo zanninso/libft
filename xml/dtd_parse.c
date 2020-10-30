@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dtd_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 13:56:33 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/30 14:55:29 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/31 00:12:32 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,60 @@ void get_rules(char *str)
     }
 }
 
-parse_element()
+static int valide_name(char *str, const char *cmp)
 {
-    
+    int i = 0;
+    while(*str)
+    {
+        if (ft_isinstr(*str, cmp) && i > 0)
+            return(1);
+        if(!ft_isnalnum(*str))
+        {
+            ft_printf("node name accpet just aphabet line:%d\n", 8);
+            return(0);
+        }
+        str++;
+        i = 1;
+    }
+    ft_printf("invalide close of tag line:%d\n", 8);
+    return(0);
 }
 
-parse_value_constraint()
+int valide_rule(char *str)
 {
-    
-}
+    int i;
+    int p;
+    int or;
 
-parse_attribute_list()
-{
-    
+    i = 0;
+    p = 1;
+    while(*str && p)
+    {
+        if(*str == '(')
+            p++;
+        else if(!valide_name(str, " |,+*?"))
+            break;
+        if(ft_isinstr(*str, "*+?"))
+            *str++;
+        str = ft_skip_chars(str, " ", NULL);
+        if(*str == '|')
+        {
+            or = 1;
+            *str++;
+        }
+        else if (*str == ',')
+        {
+           or = 0;
+            *str++; 
+        }
+        else if(*str == ')')
+            p--;
+        else 
+            return(0);
+    }
+    if(p != 0)
+        ft_printf("invalide bracket close ");
+    return(p == 0)
 }
 
 t_list *parse_dtd_node(char *str)
