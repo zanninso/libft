@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xml.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:12 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/28 20:18:17 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/10/30 11:25:19 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ typedef struct	s_xml_tag
 	t_list			*attributes;
     t_tag_value    	value;
 }         		t_xml_tag;
+
+typedef struct	s_dtd
+{
+	char            *name;
+	t_list 			*nodes;
+	t_list			*attributes;
+    t_tag_value    	value;
+}         		t_dtd;
 
 t_list *read_and_tokenizexml(int fd);
 t_xml_tag *xml_modeling(t_list *tokens);
