@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dtd_parse.c                                        :+:      :+:    :+:   */
+/*   validate_dtd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/28 13:56:33 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/31 12:28:21 by aait-ihi         ###   ########.fr       */
+/*   Created: 2020/10/31 12:28:31 by aait-ihi          #+#    #+#             */
+/*   Updated: 2020/10/31 14:46:03 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int valide_name(char *str, const char *cmp, size_t *col, size_t line)
+int valide_name(char *str, const char *cmp, size_t *col, size_t line)
 {
     int i = 0;
     while (str[*col])
@@ -77,6 +77,36 @@ int valide_rule(char *str, size_t *col, size_t line)
     return (0);
 }
 
+
+int valide_restrictions(char *str, size_t *c, size_t l)
+{
+    *c++;
+    while (str[*c])
+    {
+        *c = (ft_skip_chars(&str[*c], " ", NULL) - (&str[*c]));
+        if(ft_strnequ("min=", &str[*c], 4) && !valid_min(str, c, l))
+            return(0);
+        else if(ft_strnequ("max=", &str[*c], 4) && !valid_min(str, c, l))
+            return(0);
+        else if(ft_strnequ("type=", &str[*c], 5) && !valid_type(str, c, l))
+            return(0)
+        else if(ft_strnequ("enum=", &str[*c], 5) && !valid_enum(str, c, l))
+            return(0);
+        else
+        {
+            ft_printf("Invalide restriction line:%ul, col:%ul\n", l, *c);
+            return(0);
+        }
+        if(str[*c] == ')')
+        {
+            *c = (ft_skip_chars(&str[*c], " ", NULL) - (&str[*c]));
+            return (1);
+        }
+    }
+    ft_printf("No bracket close line:%ul, col:%ul\n", line, *col);
+    return (0);
+}
+
 int validate_tdt_element(char *str, size_t line)
 {
     size_t col;
@@ -104,23 +134,4 @@ int validate_tdt_element(char *str, size_t line)
         return (0);
     }
     return(1)
-}
-
-t_dtd *parse_dtd(char *file)
-{
-    t_list *nodes;
-    char *line;
-    size_t line_count;
-
-    tokens = NULL;
-    line = NULL;
-    line_count = 0;
-    while (get_next_line(fd, &line))
-    {
-        tokens = add_to_xmlexer(tokens, line);
-        ft_memdel((void **)&line);
-        line_count++;
-    }
-    ft_memdel((void **)&line);
-    return tokens;
 }
