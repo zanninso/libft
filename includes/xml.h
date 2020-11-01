@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xml.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:12 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/01 14:39:52 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/01 23:56:22 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define XMLTAGOPEN 1
 #define XMLTAGCLOSE 2
 #define XMLVALUE 3
+#define TAG_TYPE_LEN 10
 
 enum{
 	XML_NOERR,XML_MALLOC_ERR,XML_BADCLOSE_ERR,XML_NOROOT_ERR,XML_ROOTEND,XML_NOOPEN_ERR

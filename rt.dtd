@@ -1,0 +1,5 @@
+<!ELEMENT     note     (to   ,  from   ,    heading   ,   body ,((kpoad,sadlkkad,dlkasd)|po))>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body (#PCDATA)> 
