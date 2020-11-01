@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 13:56:33 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/31 12:28:21 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/01 11:35:05 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,11 @@ t_dtd *parse_dtd(char *file)
     line_count = 0;
     while (get_next_line(fd, &line))
     {
-        tokens = add_to_xmlexer(tokens, line);
+        if(!valid_dtd_element(line ))
+        {
+            ft_printf("error error error\n");
+            exit(0);
+        }
         ft_memdel((void **)&line);
         line_count++;
     }

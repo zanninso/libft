@@ -6,11 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 13:39:16 by aait-ihi          #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2020/10/29 14:50:08 by aait-ihi         ###   ########.fr       */
-=======
-/*   Updated: 2020/10/29 20:49:41 by aait-ihi         ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2020/11/01 11:58:34 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,16 +105,6 @@ t_xml_tag *xml_modeling(t_list *tokens)
 	{
 		tmp = tokens->content;
 		if(tmp->type == XMLTAGOPEN)
-<<<<<<< Updated upstream
-			opentag(&tag_queue, tmp);
-		else if(tag_queue && tmp->type == XMLVALUE)
-			check_value(&tag_queue, tmp);
-		else if(tmp->type == XMLTAGCLOSE && tag_queue && tag_queue->next)
-			closetag(&tag_queue, tmp);
-		else
-			break;
-		ft_lstdequeue(&tokens, ft_memdel);
-=======
 			status = opentag(&tag_queue, tmp);
 		else if(tmp->type == XMLTAGCLOSE)
 			status = closetag(&tag_queue, tmp);
@@ -126,7 +112,6 @@ t_xml_tag *xml_modeling(t_list *tokens)
 			status = check_value(&tag_queue, tmp);
 		if(status == 0)
 			ft_lstdequeue(&tokens, ft_memdel);
->>>>>>> Stashed changes
 	}
 	return (manage_status(tokens, tag_queue, status));
 }

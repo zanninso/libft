@@ -6,11 +6,11 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 22:07:27 by aait-ihi          #+#    #+#             */
-/*   Updated: 2019/12/29 00:08:13 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/01 12:29:33 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/get_next_line.h"
+#include "get_next_line.h"
 
 int	get_next_line(const int fd, char **line)
 {

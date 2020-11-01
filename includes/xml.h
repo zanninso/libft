@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   xml.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:12 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/30 21:30:12 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/01 14:39:52 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef XML_H
 # define XML_H
-
+#include "libft.h"
 #include <fcntl.h>
-# include "libft.h"
 #define XMLTAGOPEN 1
 #define XMLTAGCLOSE 2
 #define XMLVALUE 3
@@ -58,5 +57,12 @@ typedef struct	s_dtd
 
 t_list *read_and_tokenizexml(int fd);
 t_xml_tag *xml_modeling(t_list *tokens);
+
+int valid_min_max(char *str, size_t *col, size_t line);
+int valid_type(char *str, size_t *col, size_t line);
+int  valid_enum(char *str, size_t *col, size_t line);
+int valid_dtd_element(char *str, size_t line);
+
+
 
 #endif

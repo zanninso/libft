@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2020/10/28 20:30:27 by aait-ihi         ###   ########.fr        #
+#    Updated: 2020/11/01 14:31:52 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,60 +147,75 @@ PRINTF_SRC = 	dispatcher.c\
 				va_arg.c
 
 XML_SRC =		xml_dom.c\
-				lexer.c
+				lexer.c\
+				validate_dtd.c\
+				tdt_restrictions.c\
 				
 
 SRC	=			get_next_line.c\
 				ft_die.c\
 				flags.c\
 				ft_is_dir.c
+BIN = bin/
 
-OBJ =	$(BIGINT_SRC:%.c=%.o) $(STRING_SRC:%.c=%.o) $(BITS_SRC:%.c=%.o) \
+OBJTMP =$(BIGINT_SRC:%.c=%.o) $(STRING_SRC:%.c=%.o) $(BITS_SRC:%.c=%.o) \
 		$(CHAR_SRC:%.c=%.o) $(LIST_SRC:%.c=%.o) $(MEMORY_SRC:%.c=%.o)\
 		$(NUMBER_SRC:%.c=%.o) $(PRINTF_SRC:%.c=%.o) $(XML_SRC:%.c=%.o) $(SRC:%.c=%.o)
 
+OBJ = $(addprefix $(BIN),$(OBJTMP))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(FLAG) $(OPTION) -I $(INCLUDE) $(SRC)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-%.o : bigint/%.c includes/bigint.h includes/libft.h
+bin/%.o :bigint/%.c includes/bigint.h includes/libft.h
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
- %.o : bits/%.c $(LIBFT_HEADER)
+bin/%.o :bits/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
- %.o : char/%.c $(LIBFT_HEADER)
+bin/%.o :char/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
- %.o : ft_printf/%.c includes/printf.h $(LIBFT_HEADER)
+bin/%.o :ft_printf/%.c includes/printf.h $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
-%.o : list/%.c $(LIBFT_HEADER)
+bin/%.o :list/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
- %.o : memory/%.c $(LIBFT_HEADER)
+bin/%.o :memory/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
- %.o : number/%.c $(LIBFT_HEADER)
+bin/%.o :number/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
- %.o : string/%.c $(LIBFT_HEADER)
+bin/%.o :string/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
-%.o : xml/%.c $(LIBFT_HEADER)
+bin/%.o :xml/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
- %.o : %.c $(LIBFT_HEADER)
+bin/%.o :general/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
 clean:
-	@/bin/rm -f $(OBJ)
+	@/bin/rm -rf $(BIN)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
 
