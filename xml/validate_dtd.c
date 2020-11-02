@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_dtd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 12:28:31 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/01 22:55:20 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/02 19:24:45 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int valide_pcdata(char *str, const char *cmp, size_t *col, size_t line)
     if (ft_isinstr(str[*col], cmp))
     {
         col[0] += (ft_skip_chars(&str[*col], " ", NULL) - (str + *col));
-        ft_printf("%s\n", &str[*col]);
+        // ft_printf("%s\n", &str[*col]);
         return (1);
     }
     ft_printf("invalide splitter after node name line:%lu, col:%lu\n", line, *col);
@@ -29,17 +29,17 @@ int valide_name(char *str, const char *cmp, size_t *col, size_t line)
 {
     int i = 0;
 
-    ft_printf("-------------------->%s|%d\n", str + *col, *col);
+    // ft_printf("-------------------->%s|%d\n", str + *col, *col);
     *col += (ft_skip_chars(&str[*col], " ", NULL) - (str + *col));
     if (ft_strnequ("#PCDATA", &str[*col], 7))
         return (valide_pcdata(str, cmp, col, line));
     while (str[*col])
     {
-        ft_printf(":%c::%s:\n", str[*col], cmp);
+        // ft_printf(":%c::%s:\n", str[*col], cmp);
         if (ft_isinstr(str[*col], cmp) && i > 0)
         {
             col[0] += (ft_skip_chars(&str[*col], " ", NULL) - (str + *col));
-            ft_printf("%s\n", &str[*col]);
+            // ft_printf("%s\n", &str[*col]);
             return (1);
         }
         if (!ft_isalnum(str[*col]))
@@ -88,7 +88,7 @@ int valide_rule(char *str, size_t *col, size_t line)
         {
             col[0] += ft_isinstr(str[*col], "*+?");
             col[0] += (ft_skip_chars(&str[*col], " ", NULL) - (str + *col));
-            ft_printf("valide rule : %s\n", str + *col);
+            // ft_printf("valide rule : %s\n", str + *col);
             return (1);
         }
         if (!valide_rule_splitter(str, col, line, &splitter))

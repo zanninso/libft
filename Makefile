@@ -6,16 +6,14 @@
 #    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr        #
+#    Updated: 2020/11/02 17:58:22 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 CC = gcc
-
-OPTION = -c
 
 INCLUDE = includes
 
@@ -115,7 +113,8 @@ MEMORY_SRC =	ft_bzero.c\
 				ft_memdel.c\
 				ft_memmove.c\
 				ft_memset.c\
-				ft_malloc2d.c
+				ft_malloc2d.c\
+				ft_promalloc.c
 
 NUMBER_SRC =	buble_sort.c\
 				ft_find_int.c\

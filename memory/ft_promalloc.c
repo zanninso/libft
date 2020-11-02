@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 14:37:13 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/02 16:43:39 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	*ft_promalloc(size_t size)
 {
 	unsigned char	*r;
 
-	if (!(r = malloc(size)))
+	r = malloc(size);
+	if (r == NULL)
 	{
 		ft_printf("malloc error");
 		exit(10);

@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 20:13:26 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/02 16:41:07 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (0);
 	i = 0;
 	len = ft_strlen(s);
-	if (!(fresh = (char *)malloc((len + 1) * sizeof(char))))
+	if (!(fresh = (char *)MALLOC((len + 1) * sizeof(char))))
 		return (0);
 	while (s && f && len && fresh && s[i])
 	{

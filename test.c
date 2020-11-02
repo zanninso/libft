@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:56:57 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/01 20:37:09 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/02 16:56:33 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,24 @@ int main()
     size_t line_count;
 	int fd;
 
-	fd = open("rt.dtd", O_RDONLY);
-	ft_printf("fd : %d\n",fd);
-    line = NULL;
-    line_count = 0;
-    while (get_next_line(fd, &line) > 0)
-    {
-		ft_printf("line:|%s|\n",line);
-        if(!valid_dtd_element(line, line_count))
-        {
-            ft_printf("error error error\n");
-            exit(0);
-        }
-        ft_memdel((void **)&line);
-        line_count++;
-    }
-    ft_memdel((void **)&line);
-	ft_printf("file is okay\n");
+	// fd = open("rt.dtd", O_RDONLY);
+	// ft_printf("fd : %d\n",fd);
+    // line = NULL;
+    // line_count = 0;
+    // while (get_next_line(fd, &line) > 0)
+    // {
+	// 	ft_printf("line:|%s|\n",line);
+    //     if(!valid_dtd_element(line, line_count))
+    //     {
+    //         ft_printf("error error error\n");
+    //         exit(0);
+    //     }
+    //     ft_memdel((void **)&line);
+    //     line_count++;
+    // }
+    // ft_memdel((void **)&line);
+	// ft_printf("file is okay\n");
+	parse_dtd("rt.dtd");
 	return(0);
 }
 

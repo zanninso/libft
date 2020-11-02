@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:12 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/02 16:56:21 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,11 @@ typedef struct	s_dtd
 t_list *read_and_tokenizexml(int fd);
 t_xml_tag *xml_modeling(t_list *tokens);
 
-int valid_min_max(char *str, size_t *col, size_t line);
-int valid_type(char *str, size_t *col, size_t line);
-int  valid_enum(char *str, size_t *col, size_t line);
-int valid_dtd_element(char *str, size_t line);
+int		valid_min_max(char *str, size_t *col, size_t line);
+int		valid_type(char *str, size_t *col, size_t line);
+int		valid_enum(char *str, size_t *col, size_t line);
+int		valid_dtd_element(char *str, size_t line);
+t_dtd	*parse_dtd(char *file);
 
 
 
