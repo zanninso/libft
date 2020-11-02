@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 13:39:16 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/01 11:58:34 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int opentag(t_list **tag_queue, t_xml_lexer *token)
 	t_list *new;
 	
 	if(!(tag.name = ft_strsub(token->value, 1, token->value_len - 2)))
-		return(XML_MALLOC_ERR);
+		return(XML_malloc_ERR);
 	tag.value.string = NULL;
 	tag.nodes = NULL;
 	// tag.attributes = get_attributes(token);	
 	if(!(new = ft_lstnew(&tag, sizeof(t_xml_tag))))
 	{
 		free(tag.name);
-		return(XML_MALLOC_ERR);
+		return(XML_malloc_ERR);
 	}
 	ft_lstpush(tag_queue, new);
 	return(XML_NOERR);
@@ -67,7 +67,7 @@ int check_value(t_list **tag_queue, t_xml_lexer *token)
 		free(tag.name);
 		free(tag.value.string);
 		ft_lstdel(&new);
-		return(XML_MALLOC_ERR);
+		return(XML_malloc_ERR);
 	}
 	parent_tag = (*tag_queue)->content;
 	ft_lstenqueue(&parent_tag->nodes, new);

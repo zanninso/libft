@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/01 14:38:15 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define ABS(v) (v < 0 ? -(v) : (v))
 # define SIGN(v) (v >= 0 ? 1 : -1)
 # define BETWEEN(v, v1, v2) ((v) >= (v1) && (v) <= (v2))
+# define malloc promalloc
 
 typedef struct	s_list
 {

@@ -6,7 +6,7 @@
 #    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2020/11/01 14:31:52 by aait-ihi         ###   ########.fr        #
+#    Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,6 +150,7 @@ XML_SRC =		xml_dom.c\
 				lexer.c\
 				validate_dtd.c\
 				tdt_restrictions.c\
+				dtd_parse.c\
 				
 
 SRC	=			get_next_line.c\
