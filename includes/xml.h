@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:12 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/02 16:56:21 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/03 17:57:37 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,20 @@ typedef struct	s_dtd
 	t_list					*attributes;
     t_dtd_restriction		restriction;
 }         		t_dtd;
+
+typedef struct	s_rule_tag
+{
+	char		*name;
+	char		*type;
+	char		*dep;
+}				t_rule_tag;
+
+typedef struct	s_tag_rule
+{
+	char		*name;
+	t_rule_tag	*rule_tags;
+}				t_tag_rule;
+
 
 t_list *read_and_tokenizexml(int fd);
 t_xml_tag *xml_modeling(t_list *tokens);

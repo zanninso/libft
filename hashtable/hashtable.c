@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 21:12:26 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/03 20:52:57 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned long hash_key(const char *key)
     return (hash);
 }
 
-int t_hash_table(t_hash_table *tab, const char *key, void *value, int expand)
+int hash_insert(t_hash_table *tab, const char *key, void *value, int expand)
 {
     unsigned int pos;
     t_hash_content *tmp;
@@ -39,18 +39,16 @@ int t_hash_table(t_hash_table *tab, const char *key, void *value, int expand)
     pos = hash_key(key) % tab->size;
     if (tab[pos].key)
     {
-        if ((tmp = ft_memalloc(sizeof(t_hash_content))))
-        {
-            tmp->key = key;
-            tmp->value = value;
-            if (tab->table[pos].last)
-                ;
-            tab->table[pos].last->next = tmp;
-            tab->table[pos].last = tmp;
-            if (!tab->table[pos].next)
-                tab->table[pos].next = tmp;
-            tab->used_size++;
-        }
+        tmp = ft_memalloc(sizeof(t_hash_content));
+        tmp->key = key;
+        tmp->value = value;
+        if (tab->table[pos].last)
+            ;
+        tab->table[pos].last->next = tmp;
+        tab->table[pos].last = tmp;
+        if (!tab->table[pos].next)
+            tab->table[pos].next = tmp;
+        tab->used_size++;
         return (tmp != NULL);
     }
     tab->table[pos].key = key;
@@ -76,46 +74,30 @@ void *hash_find(t_hash_table *tab, const char *key)
     return (NULL);
 }
 
-resize_hashtable_end(t_hash_table *tab, t_hash_table *newtab, int noerror)
-{
-    if (!noerror)
-    {
-        free_hash_table(newtab);
-        return (0);
-    }
-    if (!newtab)
-        return(0);
-    free_hash_content(tab->table, NULL);
-    ft_memcpy(tab, new_tab, sizeof(t_hash_table));
-    free(new_tab);
-    return (1);
-}
-
-int resize_hashtable(t_hash_table *tab)
+t_hash_table *resize_hashtable(t_hash_table *tab)
 {
     unsigned int i;
     t_hash_content *tmp;
-    t_hash_table newtab;
+    t_hash_table *newtab;
     unsigned int size;
-    int noerror;
 
     size = tab->size + tab->expanding_size;
     i = 0;
-    noerror = 1;
-    if ((newtab = new_hash_table(size, tab->expanding_size)))
-        while (i < size && noerror)
+    newtab = new_hash_table(size, tab->expanding_size);
+    while (i < size)
+    {
+        if (tab->table[i].key)
         {
-            if (tab->table[i].key)
-            {
-                noerror = hash_insert(newtab, tab->table[i].key, tab->table[i].value, 0);
-                if ((tmp = tab->table[i].next))
-                    while (tmp && noerror)
-                    {
-                        noerror = hash_insert(newtab, tmp->key, tmp->value, 0);
-                        tmp = tmp->next;
-                    }
-            }
-            i++;
+            hash_insert(newtab, tab->table[i].key, tab->table[i].value, 0);
+            if ((tmp = tab->table[i].next))
+                while (tmp)
+                {
+                    hash_insert(newtab, tmp->key, tmp->value, 0);
+                    tmp = tmp->next;
+                }
         }
-    return (resize_hashtable_end(tab, newtab, noerror));
+        i++;
+    }
+    free_hash_content(tab->table, NULL);
+    return (newtab);
 }
