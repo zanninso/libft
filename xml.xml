@@ -1,4 +1,4 @@
-<rtv1>
+<RT>
     <camera>
         <ray>
         </ray>
@@ -7,6 +7,6 @@
     </camera>
      <camera>
         <ray>54545</ray>
-        <fov>54545<></></fov>
+        <fov>54545</fov>
     </camera>
-</rtv1>
+</RT>

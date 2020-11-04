@@ -6,7 +6,7 @@
 /*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 15:19:49 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/02 16:46:18 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 17:12:27 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ long long		ft_pow(long long n, int p);
 int				ft_sqrt(int s);
 bool			ft_swap(int *a, int *b);
 bool			ft_isnbr(const char *s);
+bool			ft_isdouble(const char *s);
 bool			is_sorted_desc(int *t, size_t size);
 bool			is_sorted_asc(int *t, size_t size);
 bool			int_rrot(int *t, size_t size);

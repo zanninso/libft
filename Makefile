@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2020/11/04 01:23:55 by aait-ihi         ###   ########.fr        #
+#    Updated: 2020/11/04 17:37:12 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,6 +121,7 @@ NUMBER_SRC =	buble_sort.c\
 				ft_declen.c\
 				ft_isdigit.c\
 				ft_isnbr.c\
+				ft_isdouble.c\
 				ft_itoa.c\
 				ft_itoa_base.c\
 				ft_max.c\

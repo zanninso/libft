@@ -3,34 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   valid_rt_xml.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 17:43:50 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/04 03:37:11 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 17:48:21 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "xml.h"
 
+bool rt_valid_vec(t_xml_tag *tag);
+bool rt_valid_cut_exist(t_xml_tag *tag);
+bool rt_valid_enum(t_xml_tag *tag, const char *enums);
+
 bool valid_rule_by_type(t_xml_tag *tag, char *type,char *dep)
 {
     if(ft_strequ("vec", type))
-        return(valid_vec(tag));
+        return(rt_valid_vec(tag));
     if(ft_strequ("enum", type))
-        return(valid_enum(tag, dep));
+        return(rt_valid_enum(tag, dep));
     if(ft_strequ("cut_exist", type))
-        return(valid_cut_exist(tag));
+        return(rt_valid_cut_exist(tag));
     if(ft_strequ("double", type))
     {
-        if(!is_nbr(tag->value))
-            return(ft_printf("invalid value\n") * 0);
+        // if(!is_nbr(tag->value))
+        //     return(ft_printf("invalid value\n") * 0);
         return(1);
     }
     if(ft_strequ("uint", type))
     {
-        if(!is_nbr(tag->value))
-            return(ft_printf("invalid value\n") * 0);
+        // if(!is_nbr(tag->value))
+        //     return(ft_printf("invalid value\n") * 0);
         return(1);
     }
     return(0);
@@ -82,8 +86,11 @@ t_list *valid_cam_light(t_list *nodes, t_hash_table *rules)
         nodes = nodes->next;
         i++;
     }
-    if(i == 0);
-        return(ft_printf("except light found\n") * 0);
+    if(i == 0)
+    {
+        ft_printf("except light found\n");
+        return(NULL);
+    }
     return(nodes);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tag_rule.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:01:06 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/04 02:56:59 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 17:49:51 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,4 @@
 #define	L124 "\tintensity : vec\n"
 #define	L125 "\tambient : double\n"
 
-#endif
+# endif
