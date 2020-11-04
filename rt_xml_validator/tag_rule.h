@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   tag_rule.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:01:06 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/03 19:39:28 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 02:56:59 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TAG_RULE_H
 # define TAG_RULE_H
 
-#define L1 "camera:\n"
+#define L1 "camera:5\n"
 #define L2 "\tlook_from : vec\n"
 #define L3 "\tlook_at : vec\n"
 #define L4 "\tscene type : enum : normal , antialiasing, depth of field\n"
 #define L5 "\tindirect light : enum: 1,0\n"
 #define L6 "\talgo type : enum : simple , multithreading , motionblur\n"
 
-#define L7 "sphere\n"
+#define L7 "sphere:11\n"
 #define	L8 "\tposition : vec\n"
 #define	L9 "\tradius : double\n"
 #define	L10 "\tsphere_negatif : enum : 1 , 0\n"
@@ -33,7 +33,7 @@
 #define	L17 "\trefraction : unsigned int\n"
 #define	L18 "\ttexture : enum : wood , cloud , marble , perlin_noise , damier , xor_noise , toon_shading , normal_perturbation\n"
 
-#define L19 "cone\n"
+#define L19 "cone:14\n"
 #define	L20 "\tposition : vec\n"
 #define	L21 "\taxis : vec\n"
 #define	L22 "\tangle : double\n"
@@ -47,9 +47,9 @@
 #define	L30 "\tspecular : enum : 1 , 0\n"
 #define	L31 "\treflection : unsigned int\n"
 #define	L32 "\trefraction : unsigned int\n"
-#define	L39 "\ttexture : enum : wood , cloud , marble , perlin_noise , damier , xor_noise , toon_shading , normal_perturbation\n"
+#define	L33 "\ttexture : enum : wood , cloud , marble , perlin_noise , damier , xor_noise , toon_shading , normal_perturbation\n"
 
-#define	L34 "cylinder\n"
+#define	L34 "cylinder:14\n"
 #define	L35	"\tposition : vec\n"
 #define	L36	"\taxis : vec\n"
 #define	L37	"\tradius : double\n"
@@ -65,7 +65,7 @@
 #define	L47 "\trefraction : unsigned int\n"
 #define	L48	"\ttexture : enum : wood , cloud , marble , perlin_noise , damier , xor_noise , toon_shading , normal_perturbation\n"
 
-#define	L49 "plane\n"
+#define	L49 "plane:10\n"
 #define	L50	"\tposition : vec\n"
 #define	L51	"\taxis : vec\n"
 #define	L52	"\tcolor : vec\n"
@@ -77,7 +77,7 @@
 #define	L58 "\trefraction : unsigned int\n"
 #define	L59	"\ttexture : enum : wood , cloud , marble , perlin_noise , damier , xor_noise\n"
 
-#define	L60	 "disk\n"
+#define	L60	 "disk:8\n"
 #define	L61	"\tposition : vec\n"
 #define	L62	"\taxis : vec\n"
 #define	L63	"\tradius : double\n"
@@ -87,7 +87,7 @@
 #define	L67 "\tdiffuse : enum : 1 , 0\n"
 #define	L68 "\tspecular : enum : 1 , 0\n"
 
-#define	L69 "paraboloid\n"
+#define	L69 "paraboloid:8\n"
 #define	L70	"\tposition : vec\n"
 #define	L71	"\taxis : vec\n"
 #define	L72	"\tradius : double\n"
@@ -97,7 +97,7 @@
 #define	L76 "\tdiffuse : enum : 1 , 0\n"
 #define	L77 "\tspecular : enum : 1 , 0\n"
 
-#define	L78	"hyperboloid\n"
+#define	L78	"hyperboloid:7\n"
 #define	L79	"\tposition : vec\n"
 #define	L80	"\tradius : double\n"
 #define	L81	"\tcolor : vec\n"
@@ -106,7 +106,7 @@
 #define	L84 "\tdiffuse : enum : 1 , 0\n"
 #define	L85 "\tspecular : enum : 1 , 0\n"
 
-#define	L86	"triangle\n"
+#define	L86	"triangle:8\n"
 #define	L87	"\tposition : vec\n"
 #define	L88	"\tvalue_of_v1 : vec\n"
 #define	L89	"\tvalue_of_v2 : vec\n"
@@ -116,7 +116,7 @@
 #define	L93 "\tdiffuse : enum : 1 , 0\n"
 #define	L94 "\tspecular : enum : 1 , 0\n"
 
-#define	L95	"square\n"
+#define	L95	"square:11\n"
 #define	L96	"\tposition : vec\n"
 #define	L97	"\taxis : vec\n"
 #define	L98	"\tvalue_of_v1 : vec\n"
@@ -129,14 +129,14 @@
 #define	L105 "\tdiffuse : enum : 1 , 0\n"
 #define	L106 "\tspecular : enum : 1 , 0\n"
 
-#define	L107 "cube\n"
+#define	L107 "cube:5\n"
 #define	L108 "\tposition : vec\n"
 #define	L109 "\tradius : double\n"
 #define	L110 "\tcolor : vec\n"
 #define	L111 "\tdiffuse : enum : 1 , 0\n"
 #define	L112 "\tspecular : enum : 1 , 0\n"
 
-#define	L113 "Torus\n"
+#define	L113 "torus:6\n"
 #define	L114 "\tposition : vec\n"
 #define	L115 "\tradius : double\n"
 #define	L116 "\tradius : double\n"
@@ -144,7 +144,7 @@
 #define	L118 "\tdiffuse : enum : 1 , 0\n"
 #define	L119 "\tspecular : enum : 1 , 0\n"
 
-#define	L120 "light\n"
+#define	L120 "light:5\n"
 #define	L121 "\tposition : vec\n"
 #define	L122 "\tcolor : vec\n"
 #define	L123 "\ttype : double\n"

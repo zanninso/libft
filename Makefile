@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+         #
+#    By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/19 22:21:22 by aait-ihi          #+#    #+#              #
-#    Updated: 2020/11/02 17:58:22 by aait-ihi         ###   ########.fr        #
+#    Updated: 2020/11/04 01:23:55 by aait-ihi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,7 +150,9 @@ XML_SRC =		xml_dom.c\
 				validate_dtd.c\
 				tdt_restrictions.c\
 				dtd_parse.c\
-				
+
+HASH_MAP_SRC =	alloc_free.c\
+				hashtable.c			
 
 SRC	=			get_next_line.c\
 				ft_die.c\
@@ -159,7 +161,7 @@ SRC	=			get_next_line.c\
 BIN = bin/
 
 OBJTMP =$(BIGINT_SRC:%.c=%.o) $(STRING_SRC:%.c=%.o) $(BITS_SRC:%.c=%.o) \
-		$(CHAR_SRC:%.c=%.o) $(LIST_SRC:%.c=%.o) $(MEMORY_SRC:%.c=%.o)\
+		$(CHAR_SRC:%.c=%.o) $(LIST_SRC:%.c=%.o) $(MEMORY_SRC:%.c=%.o) $(HASH_MAP_SRC:%.c=%.o)\
 		$(NUMBER_SRC:%.c=%.o) $(PRINTF_SRC:%.c=%.o) $(XML_SRC:%.c=%.o) $(SRC:%.c=%.o)
 
 OBJ = $(addprefix $(BIN),$(OBJTMP))
@@ -201,7 +203,12 @@ bin/%.o :number/%.c $(LIBFT_HEADER)
 bin/%.o :string/%.c $(LIBFT_HEADER) 
 	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
+	
 bin/%.o :xml/%.c $(LIBFT_HEADER) 
+	@mkdir -p $(BIN)
+	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
+
+bin/%.o :hashtable/%.c $(LIBFT_HEADER) 
 	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 

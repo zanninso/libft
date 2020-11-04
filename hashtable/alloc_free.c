@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   alloc_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 22:25:08 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/02 14:56:49 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 01:27:30 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void free_hash_table(t_hash_table **tab, void (*del)(void **))
-{
-    if (tab && *tab)
-    {
-        free_hash_content((*tab)->table, (*tab)->size, del);
-        free(*tab);
-        *tab = NULL;
-    }
-}
 
 void free_hash_content(t_hash_content **table, unsigned int size, void (*del)(void **))
 {
@@ -30,7 +20,7 @@ void free_hash_content(t_hash_content **table, unsigned int size, void (*del)(vo
 
     i = 0;
     while (++i < size)
-        if (tab->table[i].key)
+        if (table[0][i].key)
         {
             tmp = table[0][i - 1].next;
             while (tmp)
@@ -38,16 +28,26 @@ void free_hash_content(t_hash_content **table, unsigned int size, void (*del)(vo
                 if(del)
                 {
                     del(tmp->value);
-                    ft_memdel(tmp->key);
+                    free(tmp->key);
                 }
                 to_free = tmp;
                 tmp = tmp->next;
                 free(to_free);
             }
             del(table[0][i - 1].value);
-            ft_memdel(table[0][i - 1].key);    
+            free(table[0][i - 1].key);    
         }
     ft_memdel((void **)table);
+}
+
+void free_hash_table(t_hash_table **tab, void (*del)(void **))
+{
+    if (tab && *tab)
+    {
+        free_hash_content(&(*tab)->table, (*tab)->size, del);
+        free(*tab);
+        *tab = NULL;
+    }
 }
 
 t_hash_table *new_hash_table(unsigned int size, unsigned int expnading_size)

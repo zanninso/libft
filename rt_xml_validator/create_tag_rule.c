@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tag_rule.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 17:46:15 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/03 20:32:27 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 02:58:39 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,50 +32,67 @@ char **make_file_indicator(void)
     return (lines);
 }
 
-t_list *valid_cam_light(t_list *nodes, t_tag_rule *rules)
+
+void add_rule_tag(t_tag_rule *rule,char *line, int pos)
 {
+    char **tab;
+
+    tab = ft_strsplit(line + 1, ":");
+    rule->rule_tags[pos].name = tab[0];
+    rule->rule_tags[pos].type = tab[1];
+    rule->rule_tags[pos].dep = tab[2];
+    free(tab);
+}
+
+t_hash_table *get_rules(char **lines)
+{
+    t_hash_table *tab;
     t_tag_rule *rule;
+    char *tmp;
     int i;
+    int j;
 
+    tab = new_hash_table(13,5);
     i = 0;
-    rule = find_hash_table("camera");
-    if (!valide_rule(nodes->content, rule))
-        return (0);
-    rule = find_hash_table("light");
-    while (nodes)
+    while (lines[i])
     {
-        if(!ft_strequ(((t_xml_tag *)nodes->content)->name, "light"))
-            break;
-        if (!valide_rule(nodes->content, rule))
-            return (0);
-        node = nodes->next;
+        rule = MALLOC(sizeof(t_tag_rule));
+        tmp = ft_skip_unitl_char(lines[i],":",NULL);
+        *tmp = '\0';
+        rule->name = ft_strdup(lines[i]);
+        rule->rule_tags = ft_memalloc(sizeof(t_rule_tag) * (ft_atoi(tmp + 1) + 1));
+        j = 0;
         i++;
+        while(lines[i])
+        {
+            if(lines[i][0] != '\t')
+                break;
+            add_rule_tag(rule, lines[i++], j++);
+        }
+        hash_insert(tab, rule->name, rule, 0);
     }
-    if(i == 0);
-        return(ft_printf("except light found\n") * 0);
-    return(nodes);
+    return(tab);
 }
 
-bool valide_tags(t_xml_tag *root, t_tag_rule *rules)
-{
-    t_list *node;
-    t_xml_tag tmp;
-    t_tag_rule *rule;
 
-    if (!ft_strequ(root->name, "RT"))
-    {
-        ft_printf("root element not valid");
-        return (0);
-    }
-    if (!(node = valid_cam_light(root->nodes, rules)))
-        return (ft_printf("No object found\n") * 0);
-    while (node)
-    {
-        if (!(rule = find_hash_table(((t_xml_tag *)node->content)->name)))
-            return (ft_printf("invalid tag name") * 0);
-        if (!valide_rule(node->content, rule))
-            return (0);
-        node = node->next;
-    }
-    return (1);
-}
+// int main()
+// {
+//     char *keys[] = {"camera","sphere","cone","cylinder","plane","disk","paraboloid","hyperboloid","triangle","square","cube","torus","light",NULL};
+//     t_hash_table *tab =  get_rules(make_file_indicator());
+//     t_tag_rule *rule;
+//     int j,i = 0;
+    
+//     while (keys[i])
+//     {
+//         rule = hash_find(tab, keys[i]);
+//         ft_printf("%s: \n",rule->name);
+//         j = 0;
+//         while (rule->rule_tags[j].name)
+//         {
+//             ft_printf("\t%s : %s : %s\n",rule->rule_tags[j].name,rule->rule_tags[j].type,rule->rule_tags[j].dep);
+//             j++;
+//         }
+//         i++;
+//     }
+    
+// }
