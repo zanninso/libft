@@ -3,19 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   element.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 14:16:02 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/03 20:35:13 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 15:53:26 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "xml.h"
 
-int valid_vec(t_xml_tag *tag)
+static char *get_val(t_list *nodes)
 {
-    const *char tab[] = {"x", "y", "z", NULL};
+    t_xml_tag *tag;
+    if(nodes->next)
+        return(NULL);
+    return(((t_xml_tag *)nodes->content)->value);
+}
+
+bool valid_vec(t_xml_tag *tag)
+{
+    const char* tab[] = {"x", "y", "z", NULL};
     t_list *nodes;
     t_xml_tag *tmp;
     int i;
@@ -28,7 +36,7 @@ int valid_vec(t_xml_tag *tag)
         tmp = nodes->content;
         if (!ft_strequ(tab[i], tmp->name))
             return (ft_printf("invalid tag name ") * 0);
-        if (!ft_number(tmp->value))
+        if (!ft_number(get_val(tmp->nodes)))
             return (ft_printf("invalide values\n") * 0);
         nodes = nodes->next;
         i++;
@@ -36,13 +44,13 @@ int valid_vec(t_xml_tag *tag)
     return (1);
 }
 
-int valid_enum(t_xml_tag *tag, const char *enums)
+bool valid_enum(t_xml_tag *tag, const char *enums)
 {
     char **tab;
     bool is_in_arr;
 
-    tab = ft_strsplit(enums);
-    is_in_arr = ft_str_in_arr(tab, tag->value));
+    tab = ft_strsplit(enums, ",");
+    is_in_arr = ft_str_in_arr(tab, get_val(tag->nodes));
     ft_free_2d_tab(tab);
     if (!is_in_arr)
         ft_printf("invalid value\n");
@@ -100,13 +108,13 @@ bool valide_rule(t_xml_tag *tag, t_rule_tag *rules)
     int i;
 
     i = 0;
-    if (!ft_strequ(tag->name, rule->name))
+    if (!ft_strequ(tag->name, rules->name))
     {
         ft_printf("exepted tag%s found %s \n");
         return (0);
     }
     node = tag->nodes;
-    while (rules[i])
+    while (rules[i].name)
     {
         if (node == NULL)
         {
@@ -132,7 +140,7 @@ bool valide_tags(t_xml_tag *root, t_tag_rule *rules)
         return (0);
     }
     node = root->nodes;
-    while (nodes)
+    while (node)
     {
         if (node == NULL)
         {
@@ -165,7 +173,7 @@ t_list *valid_cam_light(t_list *nodes, t_tag_rule *rules)
             break;
         if (!valide_rule(nodes->content, rule))
             return (0);
-        node = nodes->next;
+        nodes = nodes->next;
         i++;
     }
     if(i == 0);

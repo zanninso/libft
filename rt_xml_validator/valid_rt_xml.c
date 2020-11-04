@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_rt_xml.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 17:43:50 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/03 20:34:16 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 03:37:11 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,49 +36,50 @@ bool valid_rule_by_type(t_xml_tag *tag, char *type,char *dep)
     return(0);
 }
 
-bool valide_rule(t_xml_tag *tag, t_rule_tag *rules)
+bool valide_rule(t_xml_tag *tag, t_tag_rule *rule)
 {
     t_list *node;
     int i;
 
     i = 0;
     if(!ft_strequ(tag->name, rule->name))
-    {
-        ft_printf("exepted tag%s found %s \n");
-        return (0);
-    }
+        return (ft_printf("exepted tag%s found %s \n" , rule->name, tag->name) * 0);
     node = tag->nodes;
-    while(rules[i])
+    while(rule->rule_tags[i].name)
     {
-        if(node == NULL)
+        if(node == NULL || !ft_strequ(((t_xml_tag *)node->content)->name, rule->rule_tags[i].name))
         {
-            ft_printf("tag %s not found", rules[i].name);
+            ft_printf("tag %s not found", rule->rule_tags[i].name);
             return(0);
         }
-        if(!valid_rule_by_type(node->content, rule->type, rules[i].dependency))
+        if(!valid_rule_by_type(node->content, rule->rule_tags[i].type, rule->rule_tags[i].dep))
             return(0);
         i++;
         node = node->next;
     }
+    if(node)
+        return(ft_printf("additional tags here \n") * 0);
+    return(1);
 }
 
-t_list *valid_cam_light(t_list *nodes, t_tag_rule *rules)
+t_list *valid_cam_light(t_list *nodes, t_hash_table *rules)
 {
     t_tag_rule *rule;
     int i;
 
     i = 0;
-    rule = find_hash_table("camera");
+    rule = hash_find(rules, "camera");
     if (!valide_rule(nodes->content, rule))
         return (0);
-    rule = find_hash_table("light");
+    nodes = nodes->next;
+    rule = hash_find(rules,"light");
     while (nodes)
     {
-        if(!ft_strequ(((t_xml_tag *)nodes->content)->name, "light"))
+        if(!ft_strequ("ligh", ((t_xml_tag *)nodes->content)->name))
             break;
         if (!valide_rule(nodes->content, rule))
             return (0);
-        node = nodes->next;
+        nodes = nodes->next;
         i++;
     }
     if(i == 0);
@@ -86,7 +87,7 @@ t_list *valid_cam_light(t_list *nodes, t_tag_rule *rules)
     return(nodes);
 }
 
-bool valide_tags(t_xml_tag *root, t_tag_rule *rules)
+bool valide_tags(t_xml_tag *root, t_hash_table *rules)
 {
     t_list *node;
     t_xml_tag tmp;
@@ -101,7 +102,7 @@ bool valide_tags(t_xml_tag *root, t_tag_rule *rules)
         return (ft_printf("No object found\n") * 0);
     while (node)
     {
-        if (!(rule = find_hash_table(((t_xml_tag *)node->content)->name)))
+        if (!(rule = hash_find(rules,((t_xml_tag *)node->content)->name)))
             return (ft_printf("invalid tag name") * 0);
         if (!valide_rule(node->content, rule))
             return (0);

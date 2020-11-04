@@ -1,16 +1,12 @@
 <rtv1>
     <camera>
         <ray>
-            54545
-            <sd></sd>
-            <sd></sd>
-            <sd></sd>
-            jaskdaksd
         </ray>
+            pol
         <fov>54545</fov>
     </camera>
      <camera>
         <ray>54545</ray>
-        <fov>54545</fov>
+        <fov>54545<></></fov>
     </camera>
 </rtv1>

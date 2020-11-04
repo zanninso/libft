@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xml.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-ihi <aait-ihi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:12 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/11/03 17:57:37 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 15:28:33 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,23 @@
 #define XMLVALUE 3
 #define TAG_TYPE_LEN 10
 
-enum{
-	XML_NOERR,XML_malloc_ERR,XML_BADCLOSE_ERR,XML_NOROOT_ERR,XML_ROOTEND,XML_NOOPEN_ERR
-};
+/*
+** DEFINE ERROR MESSAGE
+*/
+
+#define OPEN_TAG_ERR "Invalide open tag at %lu:%lu\n"
+#define NO_TAG_TO_CLOSE "No open tag to close at %lu:%lu\n"
+#define INV_TAG_CLOS "Invalid tag close except `</%s>` found `%s` at %lu:%lu\n"
+#define NO_TAG_FOR_VAL "No opened tag to put the value at %lu:%lu"
+#define ELEM_AFTER_ROOT "Element after root tag at %lu:%lu"
+#define NO_TAG_CLOSE "No tag close found for `%s` at the end of file"
+
 
 typedef struct	s_xml_lexer
 {
-	char            *value;
+	char	*value;
+	size_t	line;
+	size_t	col;
 	int 	type;
     int    value_len;
 }          t_xml_lexer ;
@@ -45,7 +55,9 @@ typedef struct	s_xml_tag
 	char            *name;
 	t_list 			*nodes;
 	t_list			*attributes;
-    t_tag_value    	value;
+	char			*value;
+	size_t			line;
+	size_t			col;
 }         		t_xml_tag;
 
 

@@ -6,54 +6,58 @@
 /*   By: aait-ihi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 13:48:45 by aait-ihi          #+#    #+#             */
-/*   Updated: 2020/10/28 20:42:19 by aait-ihi         ###   ########.fr       */
+/*   Updated: 2020/11/04 15:07:07 by aait-ihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "xml.h"
 
-static t_xml_lexer xmlexer_get_tag(char **line)
+static t_xml_lexer xmlexer_get_tag(char *line, size_t *c, size_t l)
 {
-	char *tmp;
 	t_xml_lexer node;
+	int i;
 
-	node.type = (line[0][1] == '/' ? XMLTAGCLOSE : XMLTAGOPEN);
-	tmp = *line;
-	*line = ft_skip_unitl_char(tmp, ">", NULL);
-	*line += 1;
-	node.value_len = *line - tmp;
-	tmp = ft_strsub(tmp,0, node.value_len);
-	node.value = tmp;
-	
+	i = *c;
+	node.type = (line[*c + 1] == '/' ? XMLTAGCLOSE : XMLTAGOPEN);
+	c[0] +=  ft_skip_unitl_char(&line[*c], ">", NULL) - &line[*c];
+	c[0] += (line[*c] != '\0');		
+	node.value_len = *c - i;
+	node.value = ft_strsub(line, i, node.value_len);
+	node.line = l+1;
+	node.col = i+1;
 	return (node);
 }
 
-static t_xml_lexer xmlexer_get_value(char **line)
+static t_xml_lexer xmlexer_get_value(char *line, size_t *c, size_t l)
 {
-	char *tmp;
 	t_xml_lexer node;
+	int i;
 
-	tmp = *line;
-	*line = ft_skip_unitl_char(tmp, "<", NULL);
+	i = *c;
+	c[0] +=  ft_skip_unitl_char(&line[*c], "<", NULL) - &line[*c];
 	node.type = XMLVALUE;
-	node.value_len = *line - tmp;
-	node.value = ft_strsub(tmp, 0, node.value_len);
+	node.value_len = *c - i;
+	node.value = ft_strsub(line, i, node.value_len);
+	node.line = l+1;
+	node.col = i+1;
 	return (node);
 }
 
-t_list *add_to_xmlexer(t_list *tokens, char *line)
+t_list *add_to_xmlexer(t_list *tokens, char *line, size_t line_count)
 {
 	t_xml_lexer xmlnode;
+	size_t col;
 
-	while (*line)
+	col = 0;
+	while (line[col])
 	{
-		line = ft_skip_chars(line, NULL, ft_iswhitespace);
-		if (*line)
+		col += ft_skip_chars(&line[col], NULL, ft_iswhitespace) - &line[col];
+		if (line[col])
 		{
-			if (*line == '<')
-				xmlnode = xmlexer_get_tag(&line);
+			if (line[col] == '<')
+				xmlnode = xmlexer_get_tag(line, &col, line_count);
 			else
-				xmlnode = xmlexer_get_value(&line);
+				xmlnode = xmlexer_get_value(line, &col, line_count);
 			ft_lstenqueue(&tokens, ft_lstnew(&xmlnode, sizeof(t_xml_lexer)));
 		}
 	}
@@ -64,12 +68,15 @@ t_list *read_and_tokenizexml(int fd)
 {
 	t_list *tokens;
 	char *line;
+	size_t line_count;
 
 	tokens = NULL;
 	line = NULL;
+	line_count = 0;
 	while (get_next_line(fd, &line))
 	{
-		tokens = add_to_xmlexer(tokens, line);
+		tokens = add_to_xmlexer(tokens, line, line_count);
+		line_count++;
 		ft_memdel((void **)&line);
 	}
 	ft_memdel((void **)&line);
